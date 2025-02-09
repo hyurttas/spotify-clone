@@ -1,27 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: white;
+  background: none;
+  outline: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body, html, root, .c {
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.log-gradient {
+  background-image: linear-gradient(to bottom, #414951, #393f45, #33393e, #2d3237, #23272a);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.main-bg {
+  background: #3c3c3c;
+  background: linear-gradient(180deg, rgba(32, 17, 93, 1) 0%, rgba(8, 14, 37, .8) 25%, rgba(18, 18, 18, 1) 40%);
+}
+
+.second-bg {
+  background: #3c3c3c;
+  background: linear-gradient(180deg, #6631a4 0%, rgba(24, 8, 37, 0.8) 35%, rgba(18, 18, 18, 1) 50%);
+}
+
+*::-webkit-scrollbar {
+  height: 4px;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, .6);
+}
+
+.hov:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.hov:hover .main:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .3);
 }

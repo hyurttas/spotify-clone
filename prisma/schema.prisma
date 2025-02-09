@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  userName       String     @unique
+  email          String     @unique
+  hashedPassword String
+  profileImage   String?
+  coverImage     String?
+  artist         Boolean
+  playlists      Playlist[]
+  likedSongs     String[]   @db.ObjectId
+  songs          Song[]
+  likedPlaylists String[]   @db.ObjectId
+  createdAt      DateTime   @default(now())
+}
+
+model Playlist {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  authorId  String   @db.ObjectId
+  author    User     @relation(fields: [authorId], references: [id])
+  songs     String[] @default([]) @db.ObjectId
+  createdAt DateTime @default(now())
+  likeids   String[] @default([]) @db.ObjectId
+}
+
+model Song {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  uuid      String   @unique
+  title     String
+  authorId  String   @db.ObjectId
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  duration  String
+}
